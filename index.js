@@ -118,24 +118,14 @@ async function run() {
     res.send(result);
   });
 
+
   app.get("/addDevice/:id", async (req, res) => {
     const id = req.params.id;
-    const filter = { id: id };
-    const result = await adDeviceCollection.find(filter).toArray();
-    res.send(result);
-  });
-  app.get("/addDevice/:id", async (req, res) => {
-    const id = req.params.id;
-    const filter = { _id: new ObjectId(id) };
-    const result = await adDeviceCollection.find(filter).toArray();
-    res.send(result);
-  });
-  app.get("/addDevice/:mobNumber", async (req, res) => {
-    const mobNumber2= req.params.mobNumber;
-    const filter = { mobNumber: mobNumber2 };
+    const filter = { mobNumber: id };
     const result = await adDeviceCollection.findOne(filter);
     res.send(result);
   });
+
 
 
   app.delete("/addDevice/:id", async (req, res) => {
